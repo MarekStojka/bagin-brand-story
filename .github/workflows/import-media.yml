@@ -1,0 +1,39 @@
+name: Import presentation media
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/import-media.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Verify and extract prepared media
+        shell: python
+        run: |
+          import hashlib, pathlib, zipfile
+          expected = {'bagin-media-1.zip': '5c0384f65a9d851420a8a0d05df513b934127308f4a1f58ae1880cd05513f4f9', 'bagin-media-2.zip': '4986187a338609ebb1f437fa37501dfacf2b688b82806ed560bb5286b90c90c7', 'bagin-media-3.zip': 'b3ab8447901df4d37387e7a1f1be1239d8661978fe62f48ac882029584cd183d', 'bagin-media-4.zip': '54e3ddba5e80d81d93878ec54e9d77daad38003ef767cf6d027500ab232628a9'}
+          for filename, checksum in expected.items():
+              archive = pathlib.Path(filename)
+              assert hashlib.sha256(archive.read_bytes()).hexdigest() == checksum, filename
+              with zipfile.ZipFile(archive) as zipped:
+                  for info in zipped.infolist():
+                      path = pathlib.PurePosixPath(info.filename)
+                      assert not path.is_absolute() and '..' not in path.parts
+                      assert len(path.parts) == 2 and path.parts[0] in ('assets', 'licenses')
+                      target = pathlib.Path(info.filename)
+                      assert not target.exists(), str(target)
+                      target.parent.mkdir(exist_ok=True)
+                      target.write_bytes(zipped.read(info))
+          print('Verified and imported all 60 media files and 2 font licenses.')
+      - name: Save individual media files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets licenses
+          git rm bagin-media-1.zip bagin-media-2.zip bagin-media-3.zip bagin-media-4.zip
+          git commit -m 'Import photographs, videos, fonts and licenses'
+          git push
