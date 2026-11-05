@@ -1,0 +1,65 @@
+.carousel-section{height:370svh;position:relative;background:#f7f8fa}
+.carousel-sticky{position:sticky;top:var(--nav-height);height:calc(100svh - var(--nav-height));display:grid;grid-template-columns:1.05fr 1fr;align-items:center;padding:35px var(--gutter);gap:3vw;overflow:hidden}
+.carousel-copy{position:relative;z-index:2;max-width:680px}
+.carousel-heading h2{font-size:clamp(42px,4.7vw,82px);font-weight:900;line-height:1;letter-spacing:-.055em;margin:0 0 34px}
+.carousel-heading h2>span{color:#749aca}
+.carousel-heading p{font-size:16px;line-height:1.65;color:#697582}
+.carousel-footer{display:flex;align-items:center;gap:30px;margin-top:48px;max-width:360px}
+#carousel-position{font-size:11px;font-variant-numeric:tabular-nums;letter-spacing:.08em;color:#697582;min-width:53px}
+.carousel-dots{display:flex;gap:12px}
+.carousel-dots button{width:7px;height:7px;background:#1112;border-radius:50%;padding:0;position:relative;transition:background .2s,transform .2s}
+.carousel-dots button[aria-pressed=true]{background:#2b5cb1;transform:scale(1.3)}
+.carousel-arrows{display:flex;gap:9px;margin-left:auto}
+.carousel-arrows button{width:39px;height:39px;border:1px solid #1113;border-radius:50%;font-size:18px}
+.carousel-arrows button:not(:disabled):hover{background:#111;color:white}
+.carousel-scroll-hint{display:flex;align-items:center;gap:14px;font-size:11px;color:#84909c;margin-top:36px}
+.carousel-scroll-hint>span{font-size:24px;color:#111}
+.carousel-table{perspective:1400px;display:flex;justify-content:center;align-items:center;height:100%;min-width:0;isolation:isolate}
+.carousel-device{position:relative;width:min(350px,28vw,calc((100svh - 175px)*.46));flex:none;padding:6px;border:2px solid #777c83;border-radius:40px;background:#151619;transform:rotateX(25deg) rotateY(-13deg) rotateZ(12deg);box-shadow:1px 2px 0 #6c7178,2px 4px 0 #202226,3px 6px 0 #555b63,4px 8px 0 #23262b,5px 10px 0 #16181c,18px 38px 32px #34415126,40px 68px 65px #34415118}
+.carousel-device:before{content:'';position:absolute;left:-5px;top:15%;height:12%;width:3px;background:linear-gradient(#666,#161719);border-radius:3px}
+.carousel-device:after{content:'';position:absolute;right:-5px;top:22%;height:8%;width:3px;background:linear-gradient(#777,#161719);border-radius:3px}
+.carousel-screen{border-radius:32px;overflow:hidden;background:#fff;position:relative;isolation:isolate}
+.carousel-phone-top{height:30px;padding:11px 21px 0;display:flex;justify-content:space-between;font-size:8px;font-weight:650;position:relative}
+.carousel-phone-top>i{position:absolute;left:50%;top:7px;transform:translateX(-50%);width:25%;height:14px;background:#111;border-radius:20px}
+.carousel-profile{height:42px;padding:6px 12px;display:flex;align-items:center;gap:8px;font-size:10px}
+.carousel-avatar{width:25px;height:25px;border-radius:50%;background:#f8eedf;display:grid;place-items:center}
+.carousel-avatar img{height:17px;width:auto}.carousel-profile>span:last-child{margin-left:auto;letter-spacing:1px}
+.carousel-window{overflow:hidden;position:relative;width:100%;aspect-ratio:1088/1920;touch-action:pan-y}
+.carousel-window:focus-visible{outline:2px solid #2b5cb1;outline-offset:-2px}
+.carousel-track{display:flex;width:100%;height:100%;will-change:transform}
+.carousel-slide{flex:0 0 100%;min-width:0;height:100%;background:#d9e7f3;overflow:hidden}
+.carousel-slide img{display:block;width:100%;height:100%;object-fit:contain;user-select:none}
+.carousel-phone-count{position:absolute;right:10px;top:10px;background:#1119;color:#fff;font-size:8px;line-height:1;padding:5px 7px;border-radius:15px;pointer-events:none}
+.carousel-social{display:flex;align-items:center;gap:10px;height:42px;padding:0 12px;position:relative}
+.carousel-social svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.carousel-bookmark{margin-left:auto}
+.carousel-screen-dots{display:flex;gap:4px;position:absolute;left:50%;transform:translateX(-50%)}
+.carousel-screen-dots i{width:4px;height:4px;background:#ddd;border-radius:50%}.carousel-screen-dots i.active{background:#2b5cb1}
+.carousel-home-bar{height:3px;background:#111;border-radius:3px;width:29%;margin:4px auto 8px}
+body.reduced .carousel-section{height:auto}
+body.reduced .carousel-sticky{position:relative;top:auto;min-height:740px;height:auto;padding-block:75px}
+body.reduced .carousel-device{transform:rotateX(18deg) rotateY(-8deg) rotateZ(8deg)}
+body.reduced .carousel-scroll-hint{display:none}
+@media(max-width:850px){.carousel-sticky{grid-template-columns:1.1fr 1fr;gap:1vw}.carousel-heading h2{font-size:40px}.carousel-heading p{font-size:13px}.carousel-footer{gap:18px}.carousel-device{width:min(290px,30vw,calc((100svh - 155px)*.46))}}
+@media(max-width:700px){
+ .carousel-section{height:330svh}
+ .carousel-sticky{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:4px;padding:23px 24px 18px}
+ .carousel-copy{display:grid;grid-template-columns:1fr auto;column-gap:12px}
+ .carousel-heading{grid-column:1 / -1}
+ .carousel-heading h2{font-size:clamp(29px,8.6vw,43px);line-height:1;margin:0 0 11px}
+ .carousel-heading p{font-size:11px;line-height:1.5}
+ .carousel-heading p br{display:none}
+ .carousel-footer{grid-column:1 / -1;margin-top:16px;max-width:none;gap:22px}
+ .carousel-scroll-hint{display:none}
+ .carousel-table{min-height:0}
+ .carousel-device{width:min(250px,61vw,calc((100svh - 305px)*.43));border-radius:28px;padding:4px;transform:rotateX(20deg) rotateY(-10deg) rotateZ(10deg);box-shadow:1px 2px 0 #6c7178,2px 4px 0 #202226,3px 6px 0 #555b63,4px 8px 0 #16181c,13px 25px 25px #34415126,30px 40px 40px #34415115}
+ .carousel-screen{border-radius:22px}
+ .carousel-phone-top{height:24px;padding:8px 17px 0;font-size:6px}.carousel-phone-top>i{height:10px;top:6px}
+ .carousel-profile{height:31px;font-size:8px;padding-inline:9px;gap:6px}.carousel-avatar{height:20px;width:20px}.carousel-avatar img{height:14px}
+ .carousel-social{height:29px;gap:7px;padding:0 9px}.carousel-social svg{width:13px;height:13px}
+ .carousel-phone-count{font-size:6px;top:7px;right:7px;padding:4px 5px}
+ .carousel-home-bar{height:3px;margin:3px auto 6px}
+ body.reduced .carousel-sticky{min-height:0;padding-block:35px;gap:30px}
+ body.reduced .carousel-device{width:min(245px,60vw)}
+}
+@media(max-height:620px) and (min-width:701px){.carousel-heading h2{font-size:39px}.carousel-heading p{font-size:13px}.carousel-footer{margin-top:24px}.carousel-scroll-hint{margin-top:16px}.carousel-device{width:calc((100svh - 130px)*.44)}}

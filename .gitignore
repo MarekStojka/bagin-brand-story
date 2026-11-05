@@ -1,0 +1,8 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.openai/
+node_modules/
+*.zip
+*.tar.gz
